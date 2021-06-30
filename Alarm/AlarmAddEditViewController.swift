@@ -1,7 +1,4 @@
-//  MyAlarmApp
-//
-//  Created by testinium on 14.06.2021.
-//
+
 
 
 import UIKit
@@ -58,7 +55,6 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
     
  
     func numberOfSections(in tableView: UITableView) -> Int {
-        // Return the number of sections.
         if segueInfo.isEditMode {
             return 2
         }
@@ -159,9 +155,6 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -178,7 +171,6 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate, UITable
             alarmScheduler.reSchedule()
         }
         else if segue.identifier == Id.soundSegueIdentifier {
-            //TODO
             let dist = segue.destination as! MediaViewController
             dist.mediaID = segueInfo.mediaID
             dist.mediaLabel = segueInfo.mediaLabel

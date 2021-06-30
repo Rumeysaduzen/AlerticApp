@@ -46,7 +46,6 @@ class WeekdaysViewController: UITableViewController {
             cell.accessoryType = UITableViewCellAccessoryType.none
         }
         else{
-            //row index start from 0, weekdays index start from 1 (Sunday), so plus 1
             weekdays.append(indexPath.row + 1)
             cell.setSelected(true, animated: true)
             cell.setSelected(false, animated: true)

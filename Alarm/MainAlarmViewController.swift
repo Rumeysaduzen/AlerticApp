@@ -22,7 +22,6 @@ class MainAlarmViewController: UITableViewController{
         super.viewWillAppear(animated)
         alarmModel = Alarms()
         tableView.reloadData()
-        //dynamically append the edit button
         if alarmModel.count != 0 {
             self.navigationItem.leftBarButtonItem = editButtonItem
         }
@@ -117,7 +116,6 @@ class MainAlarmViewController: UITableViewController{
         }
     }
 
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let index = indexPath.row
@@ -125,7 +123,6 @@ class MainAlarmViewController: UITableViewController{
             let cells = tableView.visibleCells
             for cell in cells {
                 let sw = cell.accessoryView as! UISwitch
-                //adjust saved index when row deleted
                 if sw.tag > index {
                     sw.tag -= 1
                 }
@@ -134,16 +131,13 @@ class MainAlarmViewController: UITableViewController{
                 self.navigationItem.leftBarButtonItem = nil
             }
             
-            // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
             alarmScheduler.reSchedule()
         }   
     }
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         let dist = segue.destination as! UINavigationController
         let addEditController = dist.topViewController as! AlarmAddEditViewController
         if segue.identifier == Id.addSegueIdentifier {
@@ -161,8 +155,6 @@ class MainAlarmViewController: UITableViewController{
     }
     
     public func changeSwitchButtonState(index: Int) {
-        //let info = notification.userInfo as! [String: AnyObject]
-        //let index: Int = info["index"] as! Int
         alarmModel = Alarms()
         if alarmModel.alarms[index].repeatWeekdays.isEmpty {
             alarmModel.alarms[index].enabled = false

@@ -1,8 +1,3 @@
-//  MyAlarmApp
-//
-//  Created by testinium on 14.06.2021.
-//
-
 
 import Foundation
 import MediaPlayer
@@ -55,7 +50,6 @@ extension Alarm {
     }
 }
 
-//This can be considered as a viewModel
 class Alarms: Persistable {
     let ud: UserDefaults = UserDefaults.standard
     let persistKey: String = "myAlarmKey"
